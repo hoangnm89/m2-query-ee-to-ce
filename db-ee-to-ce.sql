@@ -304,4 +304,8 @@ ALTER TABLE `salesrule_website`
     ADD CONSTRAINT `SALESRULE_WEBSITE_RULE_ID_SALESRULE_RULE_ID` FOREIGN KEY (`rule_id`) REFERENCES `salesrule` (`rule_id`) ON DELETE CASCADE;
 
 
+DELETE FROM `eav_attribute`
+WHERE `attribute_code` in ('giftcard_amounts', 'allow_open_amount', 'giftcard_type', 'related_tgtr_position_limit', 'related_tgtr_position_behavior', 'upsell_tgtr_position_limit', 'upsell_tgtr_position_behavior');
+
+
 SET FOREIGN_KEY_CHECKS = 1;
