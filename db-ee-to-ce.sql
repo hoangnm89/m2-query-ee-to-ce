@@ -307,5 +307,12 @@ ALTER TABLE `salesrule_website`
 DELETE FROM `eav_attribute`
 WHERE `attribute_code` in ('giftcard_amounts', 'allow_open_amount', 'giftcard_type', 'related_tgtr_position_limit', 'related_tgtr_position_behavior', 'upsell_tgtr_position_limit', 'upsell_tgtr_position_behavior');
 
+TRUNCATE TABLE `sequence_product`;
+TRUNCATE TABLE `catalog_product_website`;
+INSERT INTO sequence_product(sequence_value)
+    SELECT entity_id FROM catalog_product_entity;
+INSERT INTO catalog_product_website(product_id, website_id)
+    SELECT entity_id, 1 FROM catalog_product_entity;
+
 
 SET FOREIGN_KEY_CHECKS = 1;
